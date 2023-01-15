@@ -1,6 +1,6 @@
-# Proiect_TW Popa Alexandra,Popa Antonela si Popovici Laura,1089 E
+Proiect_TW Popa Alexandra,Popa Antonela si Popovici Laura,1089 E
 
-Web application for bug tracking
+# Web application for bug tracking
 
 Objective
 Developing a web application which provides bug management for an application.
