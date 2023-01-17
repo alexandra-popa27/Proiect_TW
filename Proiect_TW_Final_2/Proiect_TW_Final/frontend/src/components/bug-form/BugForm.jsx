@@ -50,6 +50,7 @@ const BugForm = (props) => {
         });
     }
 
+
     return (
         <div className="bug-form">
             <h2>Add a new bug</h2>

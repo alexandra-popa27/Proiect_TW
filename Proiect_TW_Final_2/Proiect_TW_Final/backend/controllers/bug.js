@@ -52,6 +52,42 @@ const updateBug = async (req, res) => {
 	}
 };
 
+const assignBug= async (req, res) => {
+	try {
+		const { id_bug } = req.params;
+		const bug = await Bug.findOne({ where: { id_bug } });
+        if (bug) {
+            bug.set('status', 'assigned');
+            bug.save();
+            
+            res.status(200).json({bug: bug});
+        } else {
+            res.status(404).json({message: "bug not found."});
+        }
+		}
+	 catch (e) {
+		console.error(e);
+		res.status(500).send({ message: "server error" })
+	}
+};
+
+const deleteBug= async (req, res) => {
+	try {
+		const { id_bug } = req.params;
+		const bug = await Bug.findOne({ where: { id_bug } });
+        if (bug) {
+            await bug.destroy();
+            res.status(200).json({message: "deleted bug"});
+        } else {
+            res.status(404).json({message: "bug not found."});
+        }
+		}
+	 catch (e) {
+		console.error(e);
+		res.status(500).send({ message: "server error" })
+	}
+};
+
 const addNewBugToProiect = async (req, res) => {
 	try{
 		const proiect = await Proiect.findOne({ where: { id_proiect: req.params.proiectId } });
@@ -121,6 +157,7 @@ const updateBugInProiect = async (req, res) => {
 	}
 };
 
+
 module.exports = {
 	addNewBugToProiect,
 	createBug,
@@ -128,5 +165,7 @@ module.exports = {
 	updateBug,
 	getAllBugs,
 	getBugFromProiect,
-	updateBugInProiect
+	updateBugInProiect,
+	assignBug,
+	deleteBug
 };

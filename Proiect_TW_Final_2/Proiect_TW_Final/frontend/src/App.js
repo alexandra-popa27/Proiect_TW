@@ -2,7 +2,7 @@ import './App.css';
 import Navbar from './components/navbar/Navbar';
 import {BugList} from './components/bug-list/BugList';
 import { SignInForm } from './components/sign-in-form/SignInForm';
-import { ProjectsForm } from './components/projects-form/ProjectsForm';
+import{ProjectList}from './components/projects-list/ProjectList';
 
 function App() {
   let component;
@@ -14,8 +14,8 @@ function App() {
       component=<BugList/>
       break
     case"/proiecte":
-       component=<ProjectsForm/>
-        break
+      component=<ProjectList/>
+    break
   }
   return (
     <div className="App">

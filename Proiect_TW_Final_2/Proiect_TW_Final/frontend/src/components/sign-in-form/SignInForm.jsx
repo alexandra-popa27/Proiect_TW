@@ -42,8 +42,6 @@ const SignInForm = (props) => {
         else console.log("incorect");
     };
 
-
-
     return (
         <div className="sing-in-form">
             <h2>Sign In</h2>

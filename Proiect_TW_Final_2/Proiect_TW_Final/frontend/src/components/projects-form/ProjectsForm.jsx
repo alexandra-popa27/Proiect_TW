@@ -16,8 +16,6 @@ const ProjectsForm = (props) => {
 
     const {onAdd} = props;
 
-
-
     const addProiect = () => {
         // onAdd is an async function -> we can use then
         onAdd({
@@ -61,3 +59,4 @@ const ProjectsForm = (props) => {
 };
 
 export {ProjectsForm};
+

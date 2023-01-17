@@ -7,14 +7,11 @@ import {BugForm} from '../bug-form/BugForm';
 const SERVER_ADDR = "http://localhost:5002";
 
 const BugList = () => {
+
     const [bugs, setBugs] = useState([]);
 
     const getBugs = async() => {
-        const allBugs = await axios.get(`${SERVER_ADDR}/api/bugs`,{
-            params:{
-                
-            }
-        }).then(res => res.data.bugs);
+        const allBugs = await axios.get(`${SERVER_ADDR}/api/bugs`).then(res => res.data);
         setBugs(allBugs);
     };
 
@@ -33,16 +30,18 @@ const BugList = () => {
         getBugs();
     }
 
-
     // when component is mounted, fetch recipes from backend server
     useEffect(() => {
-        axios.get(`${SERVER_ADDR}/api/bugs`).then(res => setBugs(res.data.bugs));
+        axios.get(`${SERVER_ADDR}/api/bugs`).then(res => {
+            console.log(res.data)
+            setBugs(res.data);
+        });
     }, [])
 
     return (
         <React.Fragment>
-            <div className='bug-list'>
-            {bugs&&bugs.map((bug, index) => <BugCard key={index} bug={bug} onDelete={deleteBug} onAssign={assignBug}/>)}
+            <div id="id_div" className='bug-list'>
+                {bugs.map((bug, index) => <BugCard key={index} bug={bug} onDelete={deleteBug} onAssign={assignBug}/>)}
             </div>
             <BugForm onAdd={addBug}/>
         </React.Fragment>

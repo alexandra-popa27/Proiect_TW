@@ -28,20 +28,20 @@ const updateUtilizator = async (req, res) => {
 	}
 }
 
-const getUtilizatorByEmail = async (req, res) => {
-	const utilizatorEmail = req.params.email;
+const getUtilizator = async (req, res) => {
+	const utilizatorId = req.params.id_utilizator;
 	try {
-		const utilizator = await Utilizator.findOne({ where: { email: utilizatorEmail } });
+		const utilizator = await Utilizator.findOne({ where: { id_utilizator: utilizatorId } });
 		res.status(200).send(utilizator);
 	} catch (e) {
 		res.status(500).send({ message: "Server error",e });
 	}
 };
 
-const getUtilizator = async (req, res) => {
-	const utilizatorId = req.params.id_utilizator;
+const getUtilizatorByEmail = async (req, res) => {
+	const utilizatorEmail = req.params.email;
 	try {
-		const utilizator = await Utilizator.findOne({ where: { id_utilizator: utilizatorId } });
+		const utilizator = await Utilizator.findOne({ where: { email: utilizatorEmail } });
 		res.status(200).send(utilizator);
 	} catch (e) {
 		res.status(500).send({ message: "Server error",e });
